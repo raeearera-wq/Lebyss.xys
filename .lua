@@ -863,7 +863,6 @@ local aimbot = {
     fly = false,
     silentwalk = false
 }
-
 local function get_closest_target(usefov, fov_size)
     local part, spos = nil, nil
     local maximum_distance = usefov and fov_size or math.huge
@@ -2157,7 +2156,7 @@ do
         end
     end))
 end
-
+setfflag('DebugRunParallelLuaOnMainThread','True');
 do
     local mvb = ui.box.atvfly:AddTab('atv fly')
     local carfly_enabled, speed, accel, upspeed = false, 55, 100, 15
