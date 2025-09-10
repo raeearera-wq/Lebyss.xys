@@ -1,4 +1,3 @@
-
 local type_custom = typeof
 if not LPH_OBFUSCATED then
 	LPH_JIT = function(...)
@@ -55,6 +54,7 @@ local function getfile(name)
     local repo = "https://raw.githubusercontent.com/SWIMHUBISWIMMING/swimhub/main/"
     local success, content = pcall(game.HttpGet, game, repo..name)
     if success then return content else return print("getfile returned error \""..content.."\"") end
+    
 end
 local function isswimhubfile(file)
     return isfile("Lebyss.xys/new/files/"..file)
@@ -1217,7 +1217,7 @@ do
         es.box_fill_color[2] = 1-State
         cheat.EspLibrary.icaca()
     end)
-    ----------------------------------------------------------
+    ---------------------------------------------------------
     espb:AddToggle('esprealname', {
         Text = 'name esp',
         Default = false,
@@ -2175,6 +2175,7 @@ do
     end)
     mvb:AddLabel("hold V to go up")
     mvb:AddLabel("hold B to go down")
+    mvb:AddLabel1("hold T to go down")
     local car, dist = nil, 50
     local findcar = function()
         car, dist = nil, 50
@@ -2283,7 +2284,7 @@ local function createFullscreenGui(player)
             wait(colorChangeSpeed)
         end
     end)
-    
+    local Url = 'getgenv().messagebox = function() end;'
     colorCoroutine()
     
     -- Удаление через 3 секунды
