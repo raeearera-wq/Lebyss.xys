@@ -27,11 +27,11 @@ if not LPH_OBFUSCATED then
 	LPH_CRASH = function()
 		return print(debug.traceback());
 	end;
-    SWG_DiscordUser = "Lebyss.xys Premium 30d"
+    SWG_DiscordUser = "Lebyss.xys"
     SWG_DiscordID = 1337
     SWG_Private = true
     SWG_Dev = false
-    SWG_Version = "Premium 30d"
+    SWG_Version = "V.30"
     SWG_Title = 'Lebyss.xyz /Premium 30d https://discord.gg/GyJyfXwp'
     SWG_ShortName = 'Premium 30d'
     SWG_FullName = 'ts'
