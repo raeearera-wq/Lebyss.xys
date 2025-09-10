@@ -1056,6 +1056,18 @@ do
     hbb:AddToggle('hitbox_cancollide',{Text = 'Hibete Fov 120',Default = false,Callback = function(v)
         cancollide = v
     end})
+    hbb:AddToggle('hitbox_cancollide',{Text = 'lero Ambot0',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('hitbox_cancollide',{Text = 'Seho Aimbot',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('hitbox_cancollide',{Text = 'Rage bot',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('hitbox_cancollide',{Text = 'Anitn Aim',Default = false,Callback = function(v)
+        cancollide = v
+    end})
     hbb:AddToggle('hitbox_cancollide',{Text = 'Slient Aim',Default = false,Callback = function(v)
         cancollide = v
     end})
@@ -1065,11 +1077,11 @@ do
     hbb:AddSlider('hitbox_head_transparency', { Text = 'transparency', Default = 0.5, Min = 0, Max = 1, Rounding = 1, Compact = false }):OnChanged(function(State)
         hitboxheadtransparency = State
     end)
-    hbb:AddSlider('hitbox_head_size_x', { Text = 'size x', Default = 10, Min = 1, Max = 15, Rounding = 1, Compact = false }):OnChanged(function(State)
+    hbb:AddSlider('hitbox_head_size_x', { Text = 'size x', Default = 10, Min = 1, Max = 35, Rounding = 1, Compact = false }):OnChanged(function(State)
         hitboxheadsizex = State
         hbsize = _Vector3new(hitboxheadsizex, hitboxheadsizey, hitboxheadsizex)
     end)
-    hbb:AddSlider('hitbox_head_size_y', { Text = 'size y', Default = 10, Min = 1, Max = 15, Rounding = 1, Compact = false }):OnChanged(function(State)
+    hbb:AddSlider('hitbox_head_size_y', { Text = 'size y', Default = 10, Min = 1, Max = 35, Rounding = 1, Compact = false }):OnChanged(function(State)
         hitboxheadsizey = State
         hbsize = _Vector3new(hitboxheadsizex, hitboxheadsizey, hitboxheadsizex)
     end)
