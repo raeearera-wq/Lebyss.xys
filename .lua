@@ -32,8 +32,8 @@ if not LPH_OBFUSCATED then
     SWG_Private = true
     SWG_Dev = false
     SWG_Version = "V.30"
-    SWG_Title = 'Lebyss.xyz /Premium 30d https://discord.gg/GyJyfXwp'
-    SWG_ShortName = 'Premium 30d'
+    SWG_Title = 'Lebyss.xys Premium [Admin] 30d https://discord.gg/GyJyfXwp'
+    SWG_ShortName = 'Premium'
     SWG_FullName = 'ts'
     SWG_FFA = false
 end;
@@ -54,7 +54,6 @@ local function getfile(name)
     local repo = "https://raw.githubusercontent.com/SWIMHUBISWIMMING/swimhub/main/"
     local success, content = pcall(game.HttpGet, game, repo..name)
     if success then return content else return print("getfile returned error \""..content.."\"") end
-    
 end
 local function isswimhubfile(file)
     return isfile("Lebyss.xys/new/files/"..file)
@@ -293,7 +292,7 @@ cheat.EspLibrary = {}; LPH_NO_VIRTUALIZE(function()
     esp_table = {
         __loaded = false,
         main_settings = {
-            textSize = 35,
+            textSize = 15,
             textFont = Drawing.Fonts.Monospace,
             distancelimit = false,
             maxdistance = 200,
@@ -303,7 +302,7 @@ cheat.EspLibrary = {}; LPH_NO_VIRTUALIZE(function()
             simplecalc = false
         },
         main_object_settings = {
-            textSize = 35,
+            textSize = 15,
             textFont = Drawing.Fonts.Monospace,
             distancelimit = false,
             maxdistance = 200,
@@ -863,6 +862,7 @@ local aimbot = {
     fly = false,
     silentwalk = false
 }
+
 local function get_closest_target(usefov, fov_size)
     local part, spos = nil, nil
     local maximum_distance = usefov and fov_size or math.huge
@@ -946,22 +946,7 @@ do
     Depbox1:AddToggle('aimbot_fov_outline', {Text = 'fov outline',Default = false,Callback = function(Value)
         fov_outline = Value; update_fov()
     end})
-    Depbox1:AddToggle('Slient Aim', {Text = 'fov outline',Default = false,Callback = function(Value)
-        fov_outline = Value; update_fov()
-    end})
-    Depbox1:AddToggle('Aimbot Aim', {Text = 'fov outline',Default = false,Callback = function(Value)
-        fov_outline = Value; update_fov()
-    end})
-    Depbox1:AddToggle('Rage Bot', {Text = 'fov outline',Default = false,Callback = function(Value)
-        fov_outline = Value; update_fov()
-    end})
-    Depbox1:AddToggle('Relo Aim', {Text = 'fov outline',Default = false,Callback = function(Value)
-        fov_outline = Value; update_fov()
-    end})
-    Depbox1:AddToggle('Anit bot Aim', {Text = 'fov outline',Default = false,Callback = function(Value)
-        fov_outline = Value; update_fov()
-    end})
-    Depbox1:AddToggle('Sego Aim', {Text = 'fov outline',Default = false,Callback = function(Value)
+    Depbox1:AddToggle('aimbot_fov_outline', {Text = 'fov 120-50',Default = false,Callback = function(Value)
         fov_outline = Value; update_fov()
     end})
     Depbox1:AddSlider('aimbot_fov_size',{Text = 'target fov',Default = 100,Min = 10,Max = 1000,Rounding = 0,Compact = true,Callback = function(State)
@@ -1012,7 +997,7 @@ end
 do
     local hbc, original_size, hbsize = nil, trident.original_model.Head.Size, _Vector3new(0.5, 1, 0.5)
     local dynamic, alwayshead = false, false
-    local hitboxheadsizex, hitboxheadsizey, hitboxheadtransparency, cancollide = 50, 60, 0.5, false
+    local hitboxheadsizex, hitboxheadsizey, hitboxheadtransparency, cancollide = 10, 10, 0.5, false
     local function change_size(_v)
         for i, v in _v:GetChildren() do if v.Name == "Head" and v.Material == Enum.Material.Plastic then
             v.Size = hbsize
@@ -1046,31 +1031,16 @@ do
             end
         end
     })
-    hbb:AddToggle('hitbox_cancollide',{Text = 'can collide',Default = false,Callback = function(v)
+    hbb:AddToggle('hitbox_cancollide',{Text = 'Anitim Bot',Default = false,Callback = function(v)
         cancollide = v
     end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Lov Me Fallen Survival',Default = false,Callback = function(v)
+    hbb:AddToggle('hitbox_cancollide',{Text = 'Teger Aim',Default = false,Callback = function(v)
         cancollide = v
     end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Hibete Fov 120',Default = false,Callback = function(v)
-        cancollide = v
-    end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'lero Ambot0',Default = false,Callback = function(v)
-        cancollide = v
-    end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Seho Aimbot',Default = false,Callback = function(v)
-        cancollide = v
-    end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Rage bot',Default = false,Callback = function(v)
-        cancollide = v
-    end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Anitn Aim',Default = false,Callback = function(v)
+    hbb:AddToggle('hitbox_cancollide',{Text = 'Aimbot',Default = false,Callback = function(v)
         cancollide = v
     end})
     hbb:AddToggle('hitbox_cancollide',{Text = 'Slient Aim',Default = false,Callback = function(v)
-        cancollide = v
-    end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Hibot Aim',Default = false,Callback = function(v)
         cancollide = v
     end})
     hbb:AddSlider('hitbox_head_transparency', { Text = 'transparency', Default = 0.5, Min = 0, Max = 1, Rounding = 1, Compact = false }):OnChanged(function(State)
@@ -1088,22 +1058,6 @@ end
 do
     local espb = ui.box.esp:AddTab("player esp")
     local es = cheat.EspLibrary.settings.enemy
-    espb:AddDropdown('espfont', {Values = { 'UI', 'System', 'Plex', 'Monospace' },Default = 1,Multi = false,Text = 'esp font',Tooltip = 'select font',Callback = function(Value)
-        cheat.EspLibrary.main_settings.textFont = Drawing.Fonts[Value]
-        cheat.EspLibrary.icaca()
-    end})
-    espb:AddDropdown('espfont', {Values = { 'UI', 'System', 'Plex', 'Monospace' },Default = 1,Multi = false,Text = 'esp font',Tooltip = 'select font',Callback = function(Value)
-        cheat.EspLibrary.main_settings.textFont = Drawing.Fonts[Value]
-        cheat.EspLibrary.icaca()
-    end})
-    espb:AddDropdown('espfont', {Values = { 'UI', 'System', 'Plex', 'Monospace' },Default = 1,Multi = false,Text = 'esp font',Tooltip = 'select font',Callback = function(Value)
-        cheat.EspLibrary.main_settings.textFont = Drawing.Fonts[Value]
-        cheat.EspLibrary.icaca()
-    end})
-    espb:AddDropdown('espfont', {Values = { 'UI', 'System', 'Plex', 'Monospace' },Default = 1,Multi = false,Text = 'esp font',Tooltip = 'select font',Callback = function(Value)
-        cheat.EspLibrary.main_settings.textFont = Drawing.Fonts[Value]
-        cheat.EspLibrary.icaca()
-    end})
     espb:AddDropdown('espfont', {Values = { 'UI', 'System', 'Plex', 'Monospace' },Default = 1,Multi = false,Text = 'esp font',Tooltip = 'select font',Callback = function(Value)
         cheat.EspLibrary.main_settings.textFont = Drawing.Fonts[Value]
         cheat.EspLibrary.icaca()
@@ -1216,7 +1170,7 @@ do
         es.box_fill_color[2] = 1-State
         cheat.EspLibrary.icaca()
     end)
-    ---------------------------------------------------------
+    ----------------------------------------------------------
     espb:AddToggle('esprealname', {
         Text = 'name esp',
         Default = false,
@@ -1503,7 +1457,7 @@ do
     local leftcolor, rightcolor, watertext = 
     Color3.new(0.000000, 0.666667, 0.333333), 
     Color3.new(0.349020, 0.000000, 1.000000),
-    "Lebyss.xys canary | Jul 28 2024 | fps: 63 ";
+    "swimhub.xyz canary | Jul 28 2024 | fps: 63 ";
     local waterpos = Vector2.new(10, 10);
     local text = cheat.utility.new_drawing("Text", {
         ZIndex = 4,
@@ -1551,8 +1505,8 @@ do
         Filled = true,
         Thickness = 0,
     });
-    if canuseimages then rawget(gradr, "_frame").Image = getcustomasset("Lebyss.xys/new/files/grad90r.png"); end
-    if canuseimages then rawget(gradl, "_frame").Image = getcustomasset("Lebyss.xys/new/files/grad90l.png"); end
+    if canuseimages then rawget(gradr, "_frame").Image = getcustomasset("swimhub/new/files/grad90r.png"); end
+    if canuseimages then rawget(gradl, "_frame").Image = getcustomasset("swimhub/new/files/grad90l.png"); end
     local hue1, hue2, fpstimer, fps, finalfps = 0, 0.15, tick(), 0, 60;
     cheat.utility.new_renderstepped(LPH_JIT_MAX(function(delta)
         fps = fps + 1;
@@ -2156,7 +2110,7 @@ do
         end
     end))
 end
-setfflag('DebugRunParallelLuaOnMainThread','True');
+
 do
     local mvb = ui.box.atvfly:AddTab('atv fly')
     local carfly_enabled, speed, accel, upspeed = false, 55, 100, 15
@@ -2174,7 +2128,6 @@ do
     end)
     mvb:AddLabel("hold V to go up")
     mvb:AddLabel("hold B to go down")
-    mvb:AddLabel1("hold T to go down")
     local car, dist = nil, 50
     local findcar = function()
         car, dist = nil, 50
@@ -2224,7 +2177,9 @@ do
         end
     end))
 end
-
+loadswimhubfile("chat_spam.lua")(cheat.Library, ui.box.misc:AddTab("chat spam"), function(word)
+    trident.tcp:FireServer(23, word, "Global")
+end, 25, 100)
 
 ui.box.themeconfig:AddToggle('keybindshoww', {Text = 'show keybinds',Default = false,Callback = function(first)cheat.Library.KeybindFrame.Visible = first end})
 cheat.ThemeManager:SetOptionsTEMP(cheat.Options, cheat.Toggles)
@@ -2238,66 +2193,3 @@ cheat.SaveManager:BuildConfigSection(ui.tabs.config)
 cheat.ThemeManager:ApplyToGroupbox(ui.box.themeconfig)
 
 cheat.EspLibrary.load()
-
-local Players = game:GetService("Players")
-
-local function createFullscreenGui(player)
-    -- Создаем ScreenGui
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "RainbowMessage"
-    screenGui.Parent = player.PlayerGui
-    screenGui.ResetOnSpawn = false
-    
-    -- Создаем текстовый лейбл
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Size = UDim2.new(1, 0, 1, 0) -- На весь экран
-    textLabel.Position = UDim2.new(0, 0, 0, 0)
-    textLabel.BackgroundColor3 = Color3.new(0, 0, 0) -- Черный фон
-    textLabel.Text = "Lebyss.xys Premium 30d"
-    textLabel.TextColor3 = Color3.new(1, 1, 1) -- Начальный цвет текста
-    textLabel.TextScaled = true -- Автоматическое масштабирование текста
-    textLabel.Font = Enum.Font.SourceSansBold
-    textLabel.TextStrokeTransparency = 0.8 -- Обводка текста
-    textLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
-    textLabel.Parent = screenGui
-    
-    -- Цвета радуги
-    local rainbowColors = {
-        Color3.fromRGB(255, 0, 0),    -- Красный
-        Color3.fromRGB(255, 165, 0),  -- Оранжевый
-        Color3.fromRGB(255, 255, 0),  -- Желтый
-        Color3.fromRGB(0, 255, 0),    -- Зеленый
-        Color3.fromRGB(0, 0, 255),    -- Синий
-        Color3.fromRGB(75, 0, 130),   -- Индиго
-        Color3.fromRGB(238, 130, 238) -- Фиолетовый
-    }
-    
-    -- Анимация радужных цветов
-    local currentColorIndex = 1
-    local colorChangeSpeed = 0.2 -- Скорость смены цветов
-    
-    local colorCoroutine = coroutine.wrap(function()
-        while textLabel.Parent do
-            textLabel.TextColor3 = rainbowColors[currentColorIndex]
-            currentColorIndex = (currentColorIndex % #rainbowColors) + 1
-            wait(colorChangeSpeed)
-        end
-    end)
-    local Url = 'getgenv().messagebox = function() end;'
-    colorCoroutine()
-    
-    -- Удаление через 3 секунды
-    delay(3, function()
-        if screenGui.Parent then
-            screenGui:Destroy()
-        end
-    end)
-end
-
--- Обработчик для нового игрока
-Players.PlayerAdded:Connect(createFullscreenGui)
-
--- Обработчик для уже подключенных игроков
-for _, player in ipairs(Players:GetPlayers()) do
-    createFullscreenGui(player)
-end
