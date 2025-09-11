@@ -31,9 +31,9 @@ if not LPH_OBFUSCATED then
     SWG_DiscordID = 1337
     SWG_Private = true
     SWG_Dev = false
-    SWG_Version = "V.2"
+    SWG_Version = "V3.2"
     SWG_Title = 'Lebyss.xys Premium [Admin] 30d https://discord.gg/GyJyfXwp'
-    SWG_ShortName = 'Premium'
+    SWG_ShortName = 'Premium 30d'
     SWG_FullName = 'ts'
     SWG_FFA = false
 end;
@@ -239,6 +239,8 @@ local rawget = rawget
 
 ui.tabs = {
     combat = ui.window:AddTab('combat'),
+    rage = ui.window:AddTab('rage'),
+    legit = ui.window:AddTab('legit'),
     visuals = ui.window:AddTab('visuals'),
     misc = ui.window:AddTab('misc'),
     config = ui.window:AddTab('config'),
@@ -927,7 +929,7 @@ do
         return new_instance
     end
 
-    local magicbullet = ui.box.aimbot:AddTab("player redirection")
+    local magicbullet = ui.box.aimbot:AddTab("player")
     magicbullet:AddToggle('aimbot_ultraexploit',{Text = 'player redirection',Default = false,Callback = function(v)
         domagic = v
     end}):AddKeyPicker('aimbot_ultraexploit_bind', {Default = 'None',SyncToggleState = true,Mode = 'Toggle',Text = 'player redirection',NoUI = false})
@@ -946,10 +948,13 @@ do
     Depbox1:AddToggle('aimbot_fov_outline', {Text = 'fov outline',Default = false,Callback = function(Value)
         fov_outline = Value; update_fov()
     end})
-    Depbox1:AddToggle('aimbot_fov_outline', {Text = 'fov 120-50',Default = false,Callback = function(Value)
+    Depbox1:AddToggle('aimbot_fov_outline', {Text = 'FOV 120 BAN!',Default = false,Callback = function(Value)
         fov_outline = Value; update_fov()
     end})
-    Depbox1:AddSlider('aimbot_fov_size',{Text = 'target fov',Default = 100,Min = 10,Max = 1000,Rounding = 0,Compact = true,Callback = function(State)
+    Depbox1:AddToggle('aimbot_fov_outline', {Text = 'FOV 100 NO BAN!',Default = false,Callback = function(Value)
+        fov_outline = Value; update_fov()
+    end})
+    Depbox1:AddSlider('aimbot_fov_size',{Text = 'target fov',Default = 100,Min = 100,Max = 10000,Rounding = 0,Compact = true,Callback = function(State)
         fov_size = State; update_fov()
     end})
     local target, spos, cachedtarget;
@@ -1014,6 +1019,61 @@ do
             return
         end end
     end
+     
+    local hbb = ui.box.aimbot:AddTab("scammed")
+    hbb:AddToggle('scammed_enabled', {
+        Text = 'scammed expander',
+        Default = false,
+        Callback = function(value)
+            aimbot.hitboxes = value
+            if hbc then hbc:Disconnect() end
+            if value then
+                hbc = cheat.utility.new_heartbeat(function()
+                    for _, _v in validcharacters do change_size(_v) end
+                end)
+            else
+                if hbc then hbc:Disconnect() end
+                for i, _v in validcharacters do restore_original(_v) end
+            end
+        end
+    })
+    hbb:AddToggle('scammed_cancollide',{Text = 'Rame Aim',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('scammed_cancollide',{Text = 'Trade Scam Legit',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('scammed_cancollide',{Text = 'scam',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+
+    local hbb = ui.box.aimbot:AddTab("rage")
+    hbb:AddToggle('rage_enabled', {
+        Text = 'rage expander',
+        Default = false,
+        Callback = function(value)
+            aimbot.hitboxes = value
+            if hbc then hbc:Disconnect() end
+            if value then
+                hbc = cheat.utility.new_heartbeat(function()
+                    for _, _v in validcharacters do change_size(_v) end
+                end)
+            else
+                if hbc then hbc:Disconnect() end
+                for i, _v in validcharacters do restore_original(_v) end
+            end
+        end
+    })
+    hbb:AddToggle('rage_cancollide',{Text = 'RAGE',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('rage_cancollide',{Text = 'ABOBYC',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('rage_cancollide',{Text = 'HVH',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+
     local hbb = ui.box.aimbot:AddTab("hitbox")
     hbb:AddToggle('hitbox_enabled', {
         Text = 'hitbox expander',
@@ -1031,26 +1091,32 @@ do
             end
         end
     })
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Anitim Bot',Default = false,Callback = function(v)
-        cancollide = v
-    end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Teger Aim',Default = false,Callback = function(v)
+    hbb:AddToggle('hitbox_cancollide',{Text = 'hitbot',Default = false,Callback = function(v)
         cancollide = v
     end})
     hbb:AddToggle('hitbox_cancollide',{Text = 'Aimbot',Default = false,Callback = function(v)
         cancollide = v
     end})
-    hbb:AddToggle('hitbox_cancollide',{Text = 'Slient Aim',Default = false,Callback = function(v)
+    hbb:AddToggle('SlientAim_cancollide',{Text = 'Slient Aim',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('BotAim_cancollide',{Text = 'bot aim',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('Fov120_cancollide',{Text = 'Fov 120',Default = false,Callback = function(v)
+        cancollide = v
+    end})
+    hbb:AddToggle('AegoMegotHibot_cancollide',{Text = 'Aego Megot Hibot',Default = false,Callback = function(v)
         cancollide = v
     end})
     hbb:AddSlider('hitbox_head_transparency', { Text = 'transparency', Default = 0.5, Min = 0, Max = 1, Rounding = 1, Compact = false }):OnChanged(function(State)
         hitboxheadtransparency = State
     end)
-    hbb:AddSlider('hitbox_head_size_x', { Text = 'size x', Default = 10, Min = 1, Max = 35, Rounding = 1, Compact = false }):OnChanged(function(State)
+    hbb:AddSlider('hitbox_head_size_x', { Text = 'size x', Default = 10, Min = 1, Max = 50, Rounding = 1, Compact = false }):OnChanged(function(State)
         hitboxheadsizex = State
         hbsize = _Vector3new(hitboxheadsizex, hitboxheadsizey, hitboxheadsizex)
     end)
-    hbb:AddSlider('hitbox_head_size_y', { Text = 'size y', Default = 10, Min = 1, Max = 35, Rounding = 1, Compact = false }):OnChanged(function(State)
+    hbb:AddSlider('hitbox_head_size_y', { Text = 'size y', Default = 10, Min = 1, Max = 50, Rounding = 1, Compact = false }):OnChanged(function(State)
         hitboxheadsizey = State
         hbsize = _Vector3new(hitboxheadsizex, hitboxheadsizey, hitboxheadsizex)
     end)
@@ -1519,7 +1585,7 @@ do
         if hue1 >= 1 then hue1 = 0 end if hue2 >= 1 then hue2 = 0 end
         rightcolor = dynamic and Color3.fromHSV(hue1, 1, 1) or color2;
         leftcolor = dynamic and Color3.fromHSV(hue2, 1, 1) or color1;
-        watertext = ("Lebyss.xys %s | %s | %s | %s fps"):format(SWG_Version, SWG_ShortName, os.date("%b %d %Y"), tostring(finalfps));
+        watertext = ("swimhub %s | %s | %s | %s fps"):format(SWG_Version, SWG_ShortName, os.date("%b %d %Y"), tostring(finalfps));
         gradr.Color = rightcolor;
         gradl.Color = leftcolor;
         gradbackground.Color = gradr.Color:Lerp(gradl.Color, 0.5);
@@ -2177,9 +2243,6 @@ do
         end
     end))
 end
-loadswimhubfile("chat_spam.lua")(cheat.Library, ui.box.misc:AddTab("chat spam"), function(word)
-    trident.tcp:FireServer(23, word, "Global")
-end, 25, 100)
 
 ui.box.themeconfig:AddToggle('keybindshoww', {Text = 'show keybinds',Default = false,Callback = function(first)cheat.Library.KeybindFrame.Visible = first end})
 cheat.ThemeManager:SetOptionsTEMP(cheat.Options, cheat.Toggles)
