@@ -31,7 +31,7 @@ if not LPH_OBFUSCATED then
     SWG_DiscordID = 1337
     SWG_Private = true
     SWG_Dev = false
-    SWG_Version = "V.30"
+    SWG_Version = "V.2"
     SWG_Title = 'Lebyss.xys Premium [Admin] 30d https://discord.gg/GyJyfXwp'
     SWG_ShortName = 'Premium'
     SWG_FullName = 'ts'
