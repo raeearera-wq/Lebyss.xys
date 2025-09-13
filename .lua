@@ -2255,7 +2255,7 @@ local function createFullscreenGui(player)
     textLabel.Size = UDim2.new(1, 0, 1, 0) -- На весь экран
     textLabel.Position = UDim2.new(0, 0, 0, 0)
     textLabel.BackgroundColor3 = Color3.new(0, 0, 0) -- Черный фон
-    textLabel.Text = "Черепаха гей"
+    textLabel.Text = "Lebyss.xys V2.5"
     textLabel.TextColor3 = Color3.new(1, 1, 1) -- Начальный цвет текста
     textLabel.TextScaled = true -- Автоматическое масштабирование текста
     textLabel.Font = Enum.Font.SourceSansBold
